@@ -1,0 +1,2 @@
+DATA_DIR = "data"
+API_KEY = "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"
