@@ -15,5 +15,4 @@ python3 main.py
 - Check the summary and tables generated in ```data/summaries``` and ```data/tables``` directories respectively.
 
 # Limitations
-- data folder has only one hardcoded paper at the moment. Auto-downloading of papers is not possible.
 - Multiple papers are not concurrently processed. 
