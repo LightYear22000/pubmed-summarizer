@@ -1,6 +1,5 @@
 import google.generativeai as genai
 import os
-import logging
 
 
 def remove_first_and_last_lines(text):

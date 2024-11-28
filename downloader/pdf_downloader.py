@@ -1,6 +1,7 @@
 import requests
 import os
 from metapub import FindIt
+import logging
 
 
 def get_pmid_from_url(url):
@@ -41,10 +42,10 @@ def download_paper(url, output_dir):
         with open(output_file, "wb") as pdf_file:
             for chunk in response.iter_content(chunk_size=8192):
                 pdf_file.write(chunk)
-        print(f"Downloaded at {output_file}")
+        logging.info(f"Downloaded at {output_file}")
         return output_file
     else:
-        print(f"Failed to download {pm_id}: HTTP {response.text}")
+        logging.error(f"Failed to download {pm_id}: HTTP {response.text}")
 
 
 download_paper("https://pubmed.ncbi.nlm.nih.gov/39201801/?utm_source=Other&utm_medium=rss&utm_campaign=pubmed-2&utm_content=1xUFNDUH9GgcD9fNW6SIziqcwgAz3kWw5uqQ3XvLCRGR9gXMXt&fc=20241006182642&ff=20241006225626&v=2.18.0.post9+e462414",

@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from config import DATA_DIR, PAPER_URLS, SINGLE_URL_FOR_TEST, MAX_THREADS
 
 import os
+import logging
 
 # Set up directories
 papers_dir = os.path.join(DATA_DIR, "papers")
@@ -16,14 +17,13 @@ tables_dir = os.path.join(DATA_DIR, "tables")
 def download_paper_and_summarize(url):
     # Download paper
     pdf_path = download_paper(url, papers_dir)
-    print(f"pdf_path: {pdf_path}")
 
     # Summarize and generate results table from paper
     return summarize_paper(pdf_path)
 
 
 def process_url(url):
-    print(f"Processing: {url}")
+    logging.info(f"Processing: {url}")
     pmid = url.split("/")[-2]  # Extract PMID from URL
 
     try:
@@ -34,7 +34,7 @@ def process_url(url):
         summary_path = os.path.join(summaries_dir, f"{pmid}_summary.txt")
         save_text(summary, summary_path)
 
-        print(f"Genrated summary and results table for {url}")
+        logging.info(f"Genrated summary and results table for {pmid}")
 
         # Write results to file
         if table:
@@ -42,7 +42,7 @@ def process_url(url):
             save_csv(table, table_path)
 
     except Exception as e:
-        print(f"Error processing {url}: {e}")
+        logging.error(f"Error processing {url}: {e}")
 
 
 def main():
