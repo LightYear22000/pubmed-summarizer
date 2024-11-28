@@ -21,6 +21,10 @@ python3 main.py
 
 - Check the summary and tables generated in `data/summaries` and `data/tables` directories respectively.
 
+# Controls
+
+- Modify MAX_THREADS in config.py to manipulate the threadpool size used for concurrent processing of URLs
+
 # Limitations
 
 - Multiple papers are not concurrently processed.

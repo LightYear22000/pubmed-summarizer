@@ -47,5 +47,5 @@ def summarize_paper(pdf_path):
         ["Identify and extract the main results table from the file. If there is no results table return \"none\". If there are multiple tables, extract the one that appears to be the primary results table. Return the response in csv.", pdf_file])
 
     # Remove first and last lines from results table because it seems to return
-    # text with backticks. Probably markdown.
+    # text with backticks in markdown format.
     return summary_response.text, remove_first_and_last_lines(results_table_response.text)
